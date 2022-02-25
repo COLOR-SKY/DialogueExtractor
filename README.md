@@ -1,3 +1,5 @@
+Video Demo: https://www.bilibili.com/video/BV1Ba41187cP/
+
 # DialogueExtractor
 A tool that extracts video clips using subtitles
 
