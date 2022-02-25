@@ -13,7 +13,7 @@ import json
 import os
 import re
 
-ENABLE_BETA = True
+ENABLE_BETA = False
 
 
 def denoise(inputFile):
