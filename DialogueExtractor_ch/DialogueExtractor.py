@@ -271,6 +271,9 @@ class Ui_MainWindow(object):
     def previewSelected(self):
         # Clear tempfolder
         dir = './temp/'
+        if not os.path.exists(dir):
+            # Create a new directory because it does not exist 
+            os.makedirs(path)
         for files in os.listdir(dir):
             path = os.path.join(dir, files)
             try:
@@ -282,7 +285,7 @@ class Ui_MainWindow(object):
         if not clips:
             return
         if len(clips) == 1 or not self.ConcatenateCheckBox.isChecked():  # Only selected one clip
-            clip = clips[0]  # Only Preview the first selected file
+            clip = clips[-1]  # Only Preview the last selected file
             clipFilename = clip.getClipFilename(
                 denoise_=self.DenoiseCheckBox.isChecked())
         else:
