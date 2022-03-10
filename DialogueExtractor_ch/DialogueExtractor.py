@@ -63,7 +63,7 @@ class ProjectSetup:
 
     def fetchEpisodeCaptionPairs(self):
         """Look into the inputFolder and fetch all video:caption pairs"""
-        videoFormats = [".mkv", ".mp4", ".avi", ".mov"]
+        videoFormats = [".mkv", ".mp4", ".avi", ".mov", ".wmv"]
         captionFormats = [".sub", ".ass", ".srt", ".ssa"]
         videoFiles = []
         captionFiles = []
@@ -149,12 +149,17 @@ class Ui_MainWindow(object):
 
     def getInputFolder(self, MainWindow):
         self.folderChanged = True
-        with open("./config.json", encoding="utf-8") as json_file:
-            s = json_file.read()
-            if not s:
-                data = {}
-            else:
-                data = json.loads(s)
+        data = {}
+        try:
+            with open("./config.json", encoding="utf-8") as json_file:
+                s = json_file.read()
+                if not s:
+                    data = {}
+                else:
+                    data = json.loads(s)
+        except FileNotFoundError:
+            pass
+
         fileDir = QFileDialog.getExistingDirectory(
             MainWindow, 'Select input folder', data.get("inputFolder"))
         # Validate the selection
@@ -273,7 +278,7 @@ class Ui_MainWindow(object):
         dir = './temp/'
         if not os.path.exists(dir):
             # Create a new directory because it does not exist 
-            os.makedirs(path)
+            os.makedirs(dir)
         for files in os.listdir(dir):
             path = os.path.join(dir, files)
             try:
