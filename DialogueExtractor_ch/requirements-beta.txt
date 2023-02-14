@@ -1,8 +1,6 @@
 ###### spacy w/ neuralcoref only works with python3.7 ######
 PyQt6
 pysub-parser
-libsndfile
-ffmpeg
 spleeter
 bert-extractive-summarizer
 spacy==2.3.7
