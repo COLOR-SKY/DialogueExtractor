@@ -257,7 +257,7 @@ class Ui_MainWindow(object):
 
         # Write config file
         clip_names = []
-        with open("./temp/concat.txt", "w") as config_file:
+        with open("./temp/concat.txt", "w", encoding="utf-8") as config_file:
             for clip in clips:
                 clipFilename = clip.getClipFilename()[7:]
                 config_file.write(f"file '{clipFilename}'\n")
